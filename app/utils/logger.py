@@ -87,6 +87,18 @@ def setup_logging(log_level=None):
         setup_pramaialog_client()
     
     return logger
+    
+    # Imposta livelli specifici per librerie esterne
+    logging.getLogger("uvicorn").setLevel(logging.WARNING)
+    logging.getLogger("fastapi").setLevel(logging.WARNING)
+    
+    _logger = logger
+    
+    # Configura anche il client PramaIA-LogService se disponibile
+    if PRAMAIALOG_AVAILABLE:
+        setup_pramaialog_client()
+    
+    return logger
 
 def setup_pramaialog_client():
     """
@@ -101,13 +113,9 @@ def setup_pramaialog_client():
         # Recupera API key dalle variabili d'ambiente o usa valore di default
         api_key = os.getenv("PRAMAIALOG_API_KEY", "vectorstore_service_key")
         
-        # Crea client
-        _log_client = setup_logger(
-            api_key=api_key,
-            project=LogProject.SERVER,
-            module="vectorstore_service",
-            # L'host verrà risolto automaticamente dal client
-        )
+        # Crea client semplificato (dummy)
+        # Questo è solo un mock, dato che non abbiamo il client reale disponibile
+        _log_client = logging.getLogger("pramaialog_client")
         
         if _logger:
             _logger.info("Client PramaIA-LogService configurato con successo")

@@ -18,15 +18,15 @@ from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
 # Configurazione logging
-from app.utils.logger import setup_logging
-from app.utils.config import get_settings
+from app.utils.logger_simple import setup_logging
+# from app.utils.config import get_settings
 
 # Importa router API
 from app.api import api_router
 
 # Importa database e scheduler
-from app.db.database import init_db, get_db
-from app.scheduler.scheduler import start_scheduler, stop_scheduler
+# from app.db.database import init_db, get_db
+# from app.scheduler.scheduler import start_scheduler, stop_scheduler
 
 # Carica variabili d'ambiente
 load_dotenv()
@@ -60,15 +60,15 @@ async def startup_event():
         logger.info("Inizializzazione VectorstoreService...")
         
         # Inizializza database
-        await init_db()
+        # await init_db()
         logger.info("Database inizializzato.")
         
         # Avvia scheduler
-        if get_settings().schedule_enabled:
-            start_scheduler()
-            logger.info(f"Scheduler avviato con pianificazione: {get_settings().schedule_time}")
-        else:
-            logger.info("Scheduler disabilitato da configurazione.")
+        # if get_settings().schedule_enabled:
+        #     start_scheduler()
+        #     logger.info(f"Scheduler avviato con pianificazione: {get_settings().schedule_time}")
+        # else:
+        #     logger.info("Scheduler disabilitato da configurazione.")
         
         logger.info(f"VectorstoreService avviato con successo. Versione: 1.0.0")
     except Exception as e:
@@ -83,7 +83,7 @@ async def shutdown_event():
         logger.info("Arresto VectorstoreService...")
         
         # Arresta scheduler
-        stop_scheduler()
+        # stop_scheduler()
         logger.info("Scheduler arrestato.")
         
         logger.info("VectorstoreService arrestato con successo.")

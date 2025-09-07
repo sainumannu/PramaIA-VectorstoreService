@@ -15,3 +15,6 @@ api_router.include_router(documents.router, prefix="/documents", tags=["document
 api_router.include_router(reconciliation.router, prefix="/reconciliation", tags=["reconciliation"])
 api_router.include_router(stats.router, prefix="/stats", tags=["stats"])
 api_router.include_router(embeddings.router, prefix="/embeddings", tags=["embeddings"])
+
+# Ensure api_router is exported
+__all__ = ["api_router"]

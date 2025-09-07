@@ -1,12 +1,5 @@
-from fastapi import APIRouter
-
-from app.api.routes import collections, documents, reconciliation, health
-
-api_router = APIRouter()
-
-api_router.include_router(collections.router)
-api_router.include_router(documents.router)
-api_router.include_router(reconciliation.router)
-api_router.include_router(health.router)
-
-# Add any other routers here
+"""
+Routes module initialization file.
+Questo file è intenzionalmente lasciato vuoto per evitare importazioni circolari.
+I router vengono importati direttamente nel file app/api/__init__.py
+"""
