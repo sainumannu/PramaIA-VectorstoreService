@@ -1,0 +1,662 @@
+{
+  "documents": [
+    {
+      "id": "doc16910",
+      "filename": "016486be-bc43-4c97-8e66-608d500c045c_Proposta di Servizi di Consulenza in Ambito Trasparenza.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.817127",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\016486be-bc43-4c97-8e66-608d500c045c_Proposta di Servizi di Consulenza in Ambito Trasparenza.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc17877",
+      "filename": "038622a7-761d-4790-b1d3-8e78e2ac34e4_2022_regolamento_uffici_e_servizi 2.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 1288,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.818570",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\038622a7-761d-4790-b1d3-8e78e2ac34e4_2022_regolamento_uffici_e_servizi 2.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc26356",
+      "filename": "072f1961-29fd-439d-814b-3b699d028fe4_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.820072",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\072f1961-29fd-439d-814b-3b699d028fe4_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc70558",
+      "filename": "0b0b1f30-1c3d-486d-b099-a0bd452263b8_Domanda.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 274,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.821625",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\0b0b1f30-1c3d-486d-b099-a0bd452263b8_Domanda.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc78222",
+      "filename": "0e27a358-5adb-419f-9363-611679014d2e_Durc_INPS_47196195_MLIFRZ74C23E752W.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 57, "pages": 1, "created_at": "2025-09-09T13:36:17.823214",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\0e27a358-5adb-419f-9363-611679014d2e_Durc_INPS_47196195_MLIFRZ74C23E752W.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc52354",
+      "filename": "11e01235-52e3-45c2-8112-dbfcacea572d_0000.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 38,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.824609",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\11e01235-52e3-45c2-8112-dbfcacea572d_0000.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc25171",
+      "filename": "19019255-363e-42b6-ae30-d90c254c1e05_prova0.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 38,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.827468",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\19019255-363e-42b6-ae30-d90c254c1e05_prova0.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc48044",
+      "filename": "1e0cc9ae-fbb9-459c-ae57-74bc59922d2a_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.830329",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\1e0cc9ae-fbb9-459c-ae57-74bc59922d2a_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc28784",
+      "filename": "22295f68-9bcc-4ea0-84bc-8784b3b67757_Apertura partita IVA - Copia (2).pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 16,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.832144",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\22295f68-9bcc-4ea0-84bc-8784b3b67757_Apertura partita IVA - Copia (2).pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc17199",
+      "filename": "296d2e4d-bc3c-4945-b595-992b90d5e46e_Apertura partita IVA - Copia (2).pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 16,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.834017",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\296d2e4d-bc3c-4945-b595-992b90d5e46e_Apertura partita IVA - Copia (2).pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc02825",
+      "filename": "2a2b9ad2-f9c9-416f-ab07-c1d1eec4db3c_Jared Diamond_Armi, acciaio e malattie (1997)_Introduzione_Prologo_cap_XI.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 721,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.835834",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\2a2b9ad2-f9c9-416f-ab07-c1d1eec4db3c_Jared Diamond_Armi, acciaio e malattie (1997)_Introduzione_Prologo_cap_XI.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc23436",
+      "filename": "2fd5e5cd-4571-43b1-b880-fc25a3da9ca4_Apertura partita IVA - Copia (2).pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 16,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.837373",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\2fd5e5cd-4571-43b1-b880-fc25a3da9ca4_Apertura partita IVA - Copia (2).pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc57273",
+      "filename": "36bb510a-33f4-489d-aec6-324c10b5ae93_Apertura partita IVA - Copia (2).pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 16,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.839021",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\36bb510a-33f4-489d-aec6-324c10b5ae93_Apertura partita IVA - Copia (2).pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc49445",
+      "filename": "39c4e2e9-35fa-4805-a074-837c1b219fd1_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.841295",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\39c4e2e9-35fa-4805-a074-837c1b219fd1_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc08260",
+      "filename": "3a7aa62c-4f08-48e2-b5ff-81f3e117e2b0_prova0.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 38,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.843296",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\3a7aa62c-4f08-48e2-b5ff-81f3e117e2b0_prova0.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc04587",
+      "filename": "3e78a81b-d574-4f51-8d14-12cb9fc37ae0_prova0.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 38,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.845586",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\3e78a81b-d574-4f51-8d14-12cb9fc37ae0_prova0.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc57198",
+      "filename": "4347ee5a-30fc-4ad8-b50a-1b9fc16b06a2_Autodichiarazione 1 - Copia - Copia.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 488,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.847995",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\4347ee5a-30fc-4ad8-b50a-1b9fc16b06a2_Autodichiarazione 1 - Copia - Copia.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc58133",
+      "filename": "4ca1c57c-93cb-4760-bd9b-10320ef01c14_0000.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 38,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.850264",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\4ca1c57c-93cb-4760-bd9b-10320ef01c14_0000.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc38099",
+      "filename": "500242bd-4ab5-41a3-a02e-55587a9b8e4e_1234.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 36,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.852618",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\500242bd-4ab5-41a3-a02e-55587a9b8e4e_1234.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc47512",
+      "filename": "528541ea-8fe2-4899-98dd-dd5db66e65c8_Durc_INPS_47196195_MLIFRZ74C23E752W.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 57,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.854356",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\528541ea-8fe2-4899-98dd-dd5db66e65c8_Durc_INPS_47196195_MLIFRZ74C23E752W.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc39739",
+      "filename": "63b94ca1-e2e0-4b8e-871b-bff1ff60bc1b_sdfhhwhshg.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 36,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.856644",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\63b94ca1-e2e0-4b8e-871b-bff1ff60bc1b_sdfhhwhshg.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc24961",
+      "filename": "68348c2e-a9a4-4b0c-aa0a-142bc3fae25e_2022_regolamento_uffici_e_servizi 2 - Copia.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 1288,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.858726",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\68348c2e-a9a4-4b0c-aa0a-142bc3fae25e_2022_regolamento_uffici_e_servizi 2 - Copia.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc98059",
+      "filename": "6cda1b0a-f736-4295-af6f-4dcf20bc9ce6_Apertura partita IVA - Copia (2).pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 16,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.861283",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\6cda1b0a-f736-4295-af6f-4dcf20bc9ce6_Apertura partita IVA - Copia (2).pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc10744",
+      "filename": "6f5b3fc6-d417-4aec-a0f3-e0c807bbf7d6_2022_regolamento_uffici_e_servizi 2.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 1288,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.863404",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\6f5b3fc6-d417-4aec-a0f3-e0c807bbf7d6_2022_regolamento_uffici_e_servizi 2.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc25411",
+      "filename": "7630b15d-188e-4500-bb96-4568825d6ae7_Proposta di Servizi di Consulenza in Ambito Trasparenza.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.865461",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\7630b15d-188e-4500-bb96-4568825d6ae7_Proposta di Servizi di Consulenza in Ambito Trasparenza.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc74859",
+      "filename": "80a8140f-ca4a-416d-a4f8-1f7aed830543_sdfhhwhshg.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 36,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.867788",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\80a8140f-ca4a-416d-a4f8-1f7aed830543_sdfhhwhshg.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc03663",
+      "filename": "85055ac8-7545-4c3d-8971-23b57ece0524_Apertura partita IVA.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 16,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.870014",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\85055ac8-7545-4c3d-8971-23b57ece0524_Apertura partita IVA.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc33409",
+      "filename": "88a5fb8e-6ae0-494c-8bc1-5298f7b66a5f_sdfhhwhshg - Copia.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 36,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.872726",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\88a5fb8e-6ae0-494c-8bc1-5298f7b66a5f_sdfhhwhshg - Copia.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc88473",
+      "filename": "892ba83a-e558-412d-9cae-befb17f11f98_sdfhhwhshg - Copia.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 36,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.875339",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\892ba83a-e558-412d-9cae-befb17f11f98_sdfhhwhshg - Copia.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc33060",
+      "filename": "8d7d73ae-c396-4dbb-91db-fa1e6e936176_Autodichiarazione 1 - Copia.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 488,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.878577",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\8d7d73ae-c396-4dbb-91db-fa1e6e936176_Autodichiarazione 1 - Copia.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc34450",
+      "filename": "8f4b27e1-6447-4be2-86b1-ddb34cc76b2e_Affanc.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 488,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.881689",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\8f4b27e1-6447-4be2-86b1-ddb34cc76b2e_Affanc.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc75723",
+      "filename": "94cf9512-5ba8-44a8-b40f-41c9b22a32cc_Apertura partita IVA - Copia.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 16,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.884375",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\94cf9512-5ba8-44a8-b40f-41c9b22a32cc_Apertura partita IVA - Copia.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc53666",
+      "filename": "9ec65349-e376-4607-bfe3-98de488d8e49_2022_regolamento_uffici_e_servizi 2 - Copia.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 1288,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.886778",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\9ec65349-e376-4607-bfe3-98de488d8e49_2022_regolamento_uffici_e_servizi 2 - Copia.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc02267",
+      "filename": "a13f16fb-2038-4d19-99b9-f11375b134e9_Proposta di Servizi di Consulenza in Ambito Trasparenza.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.889078",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\a13f16fb-2038-4d19-99b9-f11375b134e9_Proposta di Servizi di Consulenza in Ambito Trasparenza.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc83615",
+      "filename": "a6fa84b2-c536-4a5d-8961-0ad95f2867b3_Affanc.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 488,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.891748",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\a6fa84b2-c536-4a5d-8961-0ad95f2867b3_Affanc.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc14147",
+      "filename": "b9e65425-5948-4c6e-9756-f1e6747e22e8_Proposta di Servizi di Consulenza in Ambito Trasparenza - Copia.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.894002",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\b9e65425-5948-4c6e-9756-f1e6747e22e8_Proposta di Servizi di Consulenza in Ambito Trasparenza - Copia.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc47544",
+      "filename": "c0a19748-8c13-4ea8-9ac7-194af8fa226b_Affanc.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 488,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.896446",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\c0a19748-8c13-4ea8-9ac7-194af8fa226b_Affanc.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc82286",
+      "filename": "c2601236-ff17-4531-a607-4e4e5934202b_Apertura partita IVA - Copia (2).pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 16,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.899365",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\c2601236-ff17-4531-a607-4e4e5934202b_Apertura partita IVA - Copia (2).pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc39147",
+      "filename": "c40ab637-89ec-443e-93fb-d9007d3eeb8d_2022_regolamento_uffici_e_servizi.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 1288,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.902006",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\c40ab637-89ec-443e-93fb-d9007d3eeb8d_2022_regolamento_uffici_e_servizi.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc75440",
+      "filename": "c7b1be24-2bde-491d-9154-3c73d7b1627b_Durc_INPS_47196195_MLIFRZ74C23E752W.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 57,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.904922",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\c7b1be24-2bde-491d-9154-3c73d7b1627b_Durc_INPS_47196195_MLIFRZ74C23E752W.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc79458",
+      "filename": "cadca730-d5e2-4645-badb-931bf6bb7c9b_2022_regolamento_uffici_e_servizi 2 - Copia.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 1288,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.908385",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\cadca730-d5e2-4645-badb-931bf6bb7c9b_2022_regolamento_uffici_e_servizi 2 - Copia.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc29963",
+      "filename": "cbbe4379-72bc-4a72-926e-011bfabc2a4c_0000.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 38,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.911205",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\cbbe4379-72bc-4a72-926e-011bfabc2a4c_0000.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc32134",
+      "filename": "ccc0b7af-f35b-4472-9a37-49c4509bfadd_Jared Diamond_Armi, acciaio e malattie (1997)_Introduzione_Prologo_cap_XI.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 721,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.914500",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\ccc0b7af-f35b-4472-9a37-49c4509bfadd_Jared Diamond_Armi, acciaio e malattie (1997)_Introduzione_Prologo_cap_XI.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc58130",
+      "filename": "cd60edd6-df4c-4a33-af2e-2bfbe81820a6_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.917827",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\cd60edd6-df4c-4a33-af2e-2bfbe81820a6_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc77625",
+      "filename": "cf82994a-3b98-40c2-a1df-3e942a2d28b9_1234.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 36,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.920656",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\cf82994a-3b98-40c2-a1df-3e942a2d28b9_1234.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc97346",
+      "filename": "d3db0173-7e05-4e52-bc2a-5ea322c0b938_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.923639",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\d3db0173-7e05-4e52-bc2a-5ea322c0b938_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc34248",
+      "filename": "de283732-6791-46a9-8174-4aed8ec100a7_Domanda.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 274,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.926661",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\de283732-6791-46a9-8174-4aed8ec100a7_Domanda.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc37469",
+      "filename": "de93bb1c-2474-445d-8e97-dd0d70a63d72_Jared Diamond_Armi, acciaio e malattie (1997)_Introduzione_Prologo_cap_XI.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 721,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.929265",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\de93bb1c-2474-445d-8e97-dd0d70a63d72_Jared Diamond_Armi, acciaio e malattie (1997)_Introduzione_Prologo_cap_XI.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc13168",
+      "filename": "e46bddae-e2d9-4da1-ba23-7bf57d368be9_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.931854",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\e46bddae-e2d9-4da1-ba23-7bf57d368be9_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc48825",
+      "filename": "e5e514fd-dd54-4014-8db7-7d2eeac6dde5_Proposta di Servizi di Consulenza in Ambito Trasparenza.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.934326",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\e5e514fd-dd54-4014-8db7-7d2eeac6dde5_Proposta di Servizi di Consulenza in Ambito Trasparenza.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc23793",
+      "filename": "e63719ce-4ddf-4903-9529-f7b2326b4980_Proposta di Servizi di Consulenza in Ambito Trasparenza.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.937372",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\e63719ce-4ddf-4903-9529-f7b2326b4980_Proposta di Servizi di Consulenza in Ambito Trasparenza.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc71492",
+      "filename": "f0c4360c-486b-445e-ba4b-a9751d466dec_sdfhhwhshg - Copia.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 36,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.940366",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\f0c4360c-486b-445e-ba4b-a9751d466dec_sdfhhwhshg - Copia.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc83223",
+      "filename": "f7f0eb12-da44-44dc-8953-688545b07428_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 51,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.942997",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\f7f0eb12-da44-44dc-8953-688545b07428_Proposta di Servizi di Consulenza in Ambito Trasparenza - C.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc24379",
+      "filename": "f9fd5bed-bc79-4ce1-b7b3-0a05b715c0c9_Domanda.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 274,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.945960",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\f9fd5bed-bc79-4ce1-b7b3-0a05b715c0c9_Domanda.pdf",
+        "type": "application/pdf"
+      }
+    },
+    {
+      "id": "doc15986",
+      "filename": "fad9c004-88fd-4c9f-93fd-96abb08a4066_2022_regolamento_uffici_e_servizi 2.pdf",
+      "collection": "pdf_documents",
+      "metadata": {
+        "size_kb": 1288,
+        "pages": 1,
+        "created_at": "2025-09-09T13:36:17.948803",
+        "path": "C:\\PramaIA\\PramaIAServer\\temp_files\\fad9c004-88fd-4c9f-93fd-96abb08a4066_2022_regolamento_uffici_e_servizi 2.pdf",
+        "type": "application/pdf"
+      }
+    }
+  ]
+}

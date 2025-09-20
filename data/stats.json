@@ -1,0 +1,15 @@
+{
+  "documents_total": 55,
+  "documents_today": 0,
+  "documents_in_queue": 0,
+  "collections": 1,
+  "processing_queue": 0,
+  "last_update": "2025-09-14T11:22:25.190097",
+  "daily_stats": [
+    {
+      "date": "2025-09-09",
+      "processed": 55,
+      "indexed": 55
+    }
+  ]
+}

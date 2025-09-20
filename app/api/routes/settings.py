@@ -20,8 +20,8 @@ router = APIRouter(prefix="/settings", tags=["settings"])
 class VectorstoreSettings(BaseModel):
     schedule_enabled: bool = True
     schedule_time: str = "03:00"
-    chroma_host: str = "localhost"
-    chroma_port: int = 8000
+    chroma_persist_dir: str = "data/chroma_db"
+    chroma_collection_name: str = "prama_documents"
     max_worker_threads: int = 4
     batch_size: int = 100
 
@@ -78,8 +78,8 @@ async def update_settings(settings_data: VectorstoreSettings):
             raise HTTPException(status_code=500, detail="Errore nel salvare le impostazioni")
         
         # Aggiorna le variabili d'ambiente per le nuove connessioni
-        os.environ["CHROMA_HOST"] = settings_data.chroma_host
-        os.environ["CHROMA_PORT"] = str(settings_data.chroma_port)
+        os.environ["CHROMA_PERSIST_DIR"] = settings_data.chroma_persist_dir
+        os.environ["CHROMA_COLLECTION_NAME"] = settings_data.chroma_collection_name
         os.environ["MAX_WORKER_THREADS"] = str(settings_data.max_worker_threads)
         os.environ["BATCH_SIZE"] = str(settings_data.batch_size)
         os.environ["SCHEDULE_ENABLED"] = str(settings_data.schedule_enabled).lower()
@@ -111,7 +111,8 @@ async def get_status():
             "version": app_settings.app_version,
             "dependencies": health_status.get("dependencies", {}),
             "scheduler_enabled": settings.schedule_enabled,
-            "next_reconciliation": next_run.isoformat() if next_run else None
+            "next_reconciliation": next_run.isoformat() if next_run else None,
+            "chroma_connected": health_status.get("dependencies", {}).get("chroma", {}).get("connected", False)
         }
     except Exception as e:
         logger.error(f"Errore nel recuperare lo stato del servizio: {e}")
