@@ -1,5 +1,5 @@
 """
-ChromaDB Manager - Gestione della connessione persistente a ChromaDB.
+VectorDB Manager - Gestione del database vettoriale ChromaDB.
 
 Questo modulo fornisce funzionalità per accedere a ChromaDB in modalità persistente locale
 senza utilizzare una connessione HTTP.
@@ -18,16 +18,16 @@ logger = logging.getLogger(__name__)
 CHROMA_PERSIST_DIR = os.path.join(os.getcwd(), "data", "chroma_db")
 CHROMA_COLLECTION_NAME = "prama_documents"
 
-class ChromaDBManager:
+class VectorDBManager:
     """
-    Gestore per ChromaDB in modalità persistente locale.
+    Gestore per il database vettoriale ChromaDB in modalità persistente locale.
     Singleton per garantire una sola istanza in tutta l'applicazione.
     """
     _instance = None
     
     def __new__(cls):
         if cls._instance is None:
-            cls._instance = super(ChromaDBManager, cls).__new__(cls)
+            cls._instance = super(VectorDBManager, cls).__new__(cls)
             cls._instance._initialized = False
         return cls._instance
     
@@ -124,6 +124,27 @@ class ChromaDBManager:
         except Exception as e:
             logger.error(f"Errore nella verifica dello stato di ChromaDB: {str(e)}")
             return {"status": "error", "message": f"Errore: {str(e)}"}
+    
+    def list_collections(self) -> List[str]:
+        """
+        Lista tutte le collezioni disponibili in ChromaDB.
+        
+        Returns:
+            Lista di nomi delle collezioni.
+        """
+        if not self._client:
+            self._init_client()
+            
+        if not self._client:
+            logger.error("Client ChromaDB non disponibile")
+            return []
+            
+        try:
+            collections = self._client.list_collections()
+            return [collection.name for collection in collections]
+        except Exception as e:
+            logger.error(f"Errore nel listare le collezioni: {str(e)}")
+            return []
 
 # Esporta un'istanza singleton
-chroma_manager = ChromaDBManager()
+vector_db_manager = VectorDBManager()

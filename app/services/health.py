@@ -6,7 +6,7 @@ import logging
 import os
 from datetime import datetime
 from typing import Dict, Any, Optional
-from app.core.chroma_manager import chroma_manager
+from app.core.vectordb_manager import vector_db_manager
 
 # Logger
 logger = logging.getLogger(__name__)
@@ -20,7 +20,7 @@ async def get_service_health() -> Dict[str, Any]:
     """
     # Verifica lo stato di ChromaDB
     try:
-        chroma_status = chroma_manager.get_status()
+        chroma_status = vector_db_manager.get_status()
         
         # Adatta lo stato di ChromaDB per la UI
         # In modalità persistente locale, consideriamo "healthy" come "connected"

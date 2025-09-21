@@ -1,4 +1,4 @@
-"""
+﻿"""
 Aggiunge l'endpoint per ottenere lo stato del servizio VectorStore in modo dettagliato.
 """
 
@@ -12,8 +12,8 @@ from datetime import datetime
 from typing import Dict, Any, List, Optional
 from pathlib import Path
 
-from app.utils.document_database import DocumentDatabase
-from app.utils.extended_vectorstore_manager import ExtendedVectorstoreManager
+from app.utils.sqlite_metadata_manager import SQLiteMetadataManager
+from app.utils.document_manager import DocumentManager
 from app.core.config import Settings, get_settings
 
 # Configurazione logger
@@ -45,18 +45,25 @@ async def get_service_status_internal(settings: Settings = Depends(get_settings)
     Implementazione interna per la funzionalità di stato del servizio VectorStore.
     """
     try:
-        # Inizializza vector store manager
-        vector_manager = ExtendedVectorstoreManager()
+        # Inizializza metadata store manager
+        # metadata_manager = ExtendedMetadataStoreManager()
+        metadata_manager = DocumentManager()  # Uso DocumentManager base
         
         # Verifica la connessione al ChromaDB
-        chroma_connected = vector_manager.check_connection()
+        # Controllo connessione usando get_statistics
+        try:
+            stats = metadata_manager.get_statistics()
+            chroma_connected = True
+        except Exception:
+            chroma_connected = False
         
         # Ottieni le statistiche
-        stats = vector_manager.get_statistics()
+        stats = metadata_manager.get_statistics()
         
         # Determina lo stato generale del servizio in base a diverse condizioni
         has_documents = stats.get("total_documents", 0) > 0
-        has_collections = len(stats.get("collections", [])) > 0
+        collections = stats.get("collections", [])
+        has_collections = len(collections) > 0 if isinstance(collections, list) else False
         
         # Log di debug per vedere i valori esatti
         logger.info(f"DEBUG - Status check - ChromaDB connected: {chroma_connected}")
@@ -137,7 +144,7 @@ async def get_service_status_internal(settings: Settings = Depends(get_settings)
             "dependencies": {
                 "chroma": {
                     "status": "healthy" if chroma_connected else "error",
-                    "mode": "persistent_local" if os.path.exists(vector_manager.get_persistence_path()) else "memory",
+                    "mode": "persistent_local",  # Modalità persistente locale
                     "details": {
                         "host": getattr(settings, "CHROMA_HOST", "localhost"),
                         "port": getattr(settings, "CHROMA_PORT", 8000)

@@ -13,8 +13,8 @@ from datetime import datetime
 from typing import Dict, Any, List, Optional
 from pathlib import Path
 
-from app.utils.document_database import DocumentDatabase
-from app.utils.extended_vectorstore_manager import ExtendedVectorstoreManager
+from app.utils.sqlite_metadata_manager import SQLiteMetadataManager
+from app.utils.document_manager import DocumentManager
 
 # Configurazione logger
 logger = logging.getLogger(__name__)
@@ -23,8 +23,8 @@ logger = logging.getLogger(__name__)
 router = APIRouter(prefix="/api/database-management", tags=["database"])
 
 # Inizializzazione delle dipendenze
-doc_db = DocumentDatabase()
-vector_manager = ExtendedVectorstoreManager()
+doc_db = SQLiteMetadataManager()
+vector_manager = DocumentManager()
 
 # Directory per i backup
 BACKUP_DIR = os.path.join(os.getcwd(), "backups")
@@ -201,7 +201,7 @@ async def reset_document_db():
         # Reinizializza il database (nuovo vuoto)
         # Utilizziamo una variabile temporanea e poi la assegnamo alla variabile globale
         # all'esterno di questa funzione
-        temp_db = DocumentDatabase(migrate_from_json=False)
+        temp_db = SQLiteMetadataManager(migrate_from_json=False)
         
         # Aggiorniamo il riferimento globale al database
         globals()['doc_db'] = temp_db

@@ -3,7 +3,7 @@ Vectorstore Statistics module.
 """
 
 from fastapi import APIRouter, Query, Path, HTTPException, status
-from app.utils.vectorstore_manager_db import VectorstoreManager
+from app.utils.document_manager import DocumentManager
 import logging
 from typing import Dict, List, Any, Optional
 from datetime import datetime
@@ -14,8 +14,8 @@ router = APIRouter()
 # Configure logger
 logger = logging.getLogger(__name__)
 
-# Initialize VectorstoreManager
-vectorstore_manager = VectorstoreManager()
+# Initialize MetadataStoreManager
+metadata_manager = DocumentManager()
 
 @router.get("/")
 async def get_vectorstore_stats():
@@ -25,9 +25,9 @@ async def get_vectorstore_stats():
     Returns:
         Dict: Vectorstore statistics.
     """
-    documents = vectorstore_manager.get_documents()
-    stats = vectorstore_manager.get_stats()
-    collections = vectorstore_manager.get_collections()
+    documents = metadata_manager.get_documents()
+    stats = metadata_manager.get_stats()
+    collections = metadata_manager.get_collections()
     
     # Calcola le statistiche del vectorstore
     return {
@@ -48,7 +48,7 @@ async def get_vectorstore_documents(collection: Optional[str] = Query(None, desc
     Returns:
         Dict: List of documents.
     """
-    documents = vectorstore_manager.get_documents()
+    documents = metadata_manager.get_documents()
     
     if collection:
         # Filtra i documenti per collezione
@@ -67,10 +67,10 @@ async def get_vectorstore_collections():
     Returns:
         Dict: List of collections.
     """
-    collections = vectorstore_manager.get_collections()
+    collections = metadata_manager.get_collections()
     
     # Conta i documenti per collezione
-    documents = vectorstore_manager.get_documents()
+    documents = metadata_manager.get_documents()
     collection_counts = {}
     
     for doc in documents:
@@ -102,7 +102,7 @@ async def get_vectorstore_document(document_id: str = Path(..., description="ID 
     Returns:
         Dict: Document information.
     """
-    document = vectorstore_manager.get_document(document_id)
+    document = metadata_manager.get_document(document_id)
     
     if not document:
         raise HTTPException(

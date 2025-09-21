@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Script per l'aggiornamento delle route API per utilizzare il nuovo gestore basato su database.
-Questo script aggiorna i file necessari per utilizzare il nuovo VectorstoreManager 
+Questo script aggiorna i file necessari per utilizzare il nuovo MetadataStoreManager 
 basato su SQLite invece della versione basata su JSON.
 """
 
@@ -87,7 +87,7 @@ def update_api_routes(app_dir, dry_run=False):
             # Aggiorna import
             (
                 r"from app\.utils\.vectorstore_manager import VectorstoreManager", 
-                "from app.utils.vectorstore_manager_db import VectorstoreManager"
+                "from app.utils.metadata_store_manager import MetadataStoreManager"
             ),
             # Aggiorna eventuali altri import specifici per JSON
             (

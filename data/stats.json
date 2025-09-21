@@ -1,15 +1,20 @@
 {
-  "documents_total": 55,
-  "documents_today": 0,
+  "documents_total": 96,
+  "documents_today": 52,
   "documents_in_queue": 0,
-  "collections": 1,
+  "collections": 5,
   "processing_queue": 0,
-  "last_update": "2025-09-14T11:22:25.190097",
+  "last_update": "2025-09-20T23:46:25.321923",
   "daily_stats": [
     {
       "date": "2025-09-09",
       "processed": 55,
       "indexed": 55
+    },
+    {
+      "date": "2025-09-20",
+      "processed": 52,
+      "indexed": 52
     }
   ]
 }

@@ -14,7 +14,7 @@ from typing import Optional, Dict, Any, List
 
 # Importiamo il modello base di pydantic per la risposta di stato
 # from app.api.models import StatusResponse
-from app.utils.document_database import DocumentDatabase
+from app.utils.sqlite_metadata_manager import SQLiteMetadataManager
 
 # Router per la gestione del database
 router = APIRouter(prefix="/admin/database", tags=["admin"])
@@ -72,7 +72,7 @@ def get_table_count():
 
 def get_document_count():
     """Restituisce il numero di documenti nel database."""
-    db = DocumentDatabase(data_dir=os.path.join(os.getcwd(), "data"))
+    db = SQLiteMetadataManager(data_dir=os.path.join(os.getcwd(), "data"))
     return db.get_document_count()
 
 def calculate_fragmentation():

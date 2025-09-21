@@ -1,5 +1,5 @@
 """
-Gestore database documenti per VectorstoreService.
+SQLite Metadata Manager - Gestore metadati documenti in database SQLite.
 Sostituisce la precedente implementazione basata su JSON file con un database SQLite.
 """
 
@@ -14,13 +14,13 @@ from pathlib import Path
 # Configurazione logger
 logger = logging.getLogger(__name__)
 
-class DocumentDatabase:
+class SQLiteMetadataManager:
     """
-    Gestore database per i documenti del vectorstore.
+    Gestore metadati documenti in database SQLite.
     Utilizza SQLite come backend per scalabilità e performance migliori rispetto al file JSON.
     """
     
-    def __init__(self, data_dir: str = None, migrate_from_json: bool = True):
+    def __init__(self, data_dir: Optional[str] = None, migrate_from_json: bool = True):
         """
         Inizializza il gestore del database documenti.
         
@@ -67,6 +67,7 @@ class DocumentDatabase:
                     id TEXT PRIMARY KEY,
                     filename TEXT NOT NULL,
                     collection TEXT NOT NULL,
+                    content TEXT,
                     created_at TEXT DEFAULT CURRENT_TIMESTAMP,
                     last_updated TEXT DEFAULT CURRENT_TIMESTAMP
                 )
@@ -87,6 +88,14 @@ class DocumentDatabase:
             # Indici per migliorare le performance
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_documents_collection ON documents(collection)')
             cursor.execute('CREATE INDEX IF NOT EXISTS idx_document_metadata_key ON document_metadata(key)')
+            
+            # Verifica se la colonna content esiste già
+            try:
+                cursor.execute("SELECT content FROM documents LIMIT 1")
+            except sqlite3.OperationalError:
+                # La colonna non esiste, aggiungiamola
+                logger.info("Aggiunta colonna 'content' alla tabella documents")
+                cursor.execute('ALTER TABLE documents ADD COLUMN content TEXT')
             
             conn.commit()
             conn.close()
@@ -237,11 +246,19 @@ class DocumentDatabase:
                     
                     # Converti il valore nel tipo corretto
                     if value_type == 'int':
-                        value = int(value)
+                        try:
+                            value = int(value)
+                        except ValueError:
+                            # Se non può essere convertito, mantieni come stringa
+                            pass
                     elif value_type == 'float':
-                        value = float(value)
+                        try:
+                            value = float(value)
+                        except ValueError:
+                            # Se non può essere convertito, mantieni come stringa
+                            pass
                     elif value_type == 'bool':
-                        value = value.lower() in ('true', '1', 'yes')
+                        value = str(value).lower() in ('true', '1', 'yes')
                     elif value_type == 'json':
                         try:
                             value = json.loads(value)
@@ -279,12 +296,31 @@ class DocumentDatabase:
             cursor.execute("SELECT * FROM documents WHERE id = ?", (document_id,))
             doc_row = cursor.fetchone()
             
+            print(f"Ricerca documento {document_id} nel DB: {doc_row is not None}")
+            
             if not doc_row:
+                # Controlliamo se esistono documenti nel database
+                cursor.execute("SELECT COUNT(*) FROM documents")
+                count = cursor.fetchone()[0]
+                print(f"Il database contiene {count} documenti")
+                
+                # Elenchiamo i primi 5 documenti per diagnostica
+                if count > 0:
+                    cursor.execute("SELECT id FROM documents LIMIT 5")
+                    ids = [row[0] for row in cursor.fetchall()]
+                    print(f"Primi 5 documenti nel DB: {ids}")
+                
                 conn.close()
                 return None
             
             # Converti in dizionario
             doc = dict(doc_row)
+            
+            # Aggiungi il contenuto direttamente al documento se presente
+            if "content" in doc and doc["content"]:
+                print(f"Documento {document_id} ha contenuto: {len(doc['content'])} caratteri")
+            else:
+                print(f"Documento {document_id} non ha contenuto nel campo 'content'")
             
             # Ottieni i metadati
             cursor.execute(
@@ -292,6 +328,8 @@ class DocumentDatabase:
                 (document_id,)
             )
             metadata_rows = cursor.fetchall()
+            
+            print(f"Documento {document_id} ha {len(metadata_rows)} metadati")
             
             # Converti i metadati in un dizionario
             metadata = {}
@@ -302,11 +340,19 @@ class DocumentDatabase:
                 
                 # Converti il valore nel tipo corretto
                 if value_type == 'int':
-                    value = int(value)
+                    try:
+                        value = int(value)
+                    except ValueError:
+                        # Se non può essere convertito, mantieni come stringa
+                        pass
                 elif value_type == 'float':
-                    value = float(value)
+                    try:
+                        value = float(value)
+                    except ValueError:
+                        # Se non può essere convertito, mantieni come stringa
+                        pass
                 elif value_type == 'bool':
-                    value = value.lower() in ('true', '1', 'yes')
+                    value = str(value).lower() in ('true', '1', 'yes')
                 elif value_type == 'json':
                     try:
                         value = json.loads(value)
@@ -322,7 +368,7 @@ class DocumentDatabase:
             return doc
             
         except Exception as e:
-            logger.error(f"Errore nel recupero del documento {document_id}: {str(e)}")
+            print(f"Errore nel recupero del documento {document_id}: {str(e)}")
             return None
     
     def add_document(self, document: Dict[str, Any]) -> bool:
@@ -343,34 +389,46 @@ class DocumentDatabase:
             cursor.execute("SELECT id FROM documents WHERE id = ?", (document.get('id', ''),))
             existing = cursor.fetchone()
             
+            logger.debug(f"Aggiunta documento con ID: {document.get('id', '')}. Esiste già: {existing is not None}")
+            
+            # Preparazione campi
+            doc_id = document.get('id', '')
+            filename = document.get('filename', '')
+            collection = document.get('collection', document.get('collection_name', ''))
+            content = document.get('content', '')  # Salviamo anche il contenuto
+            
             conn.execute("BEGIN TRANSACTION")
             
             if existing:
                 # Aggiorna il documento esistente
                 cursor.execute(
-                    "UPDATE documents SET filename = ?, collection = ?, last_updated = ? WHERE id = ?",
+                    "UPDATE documents SET filename = ?, collection = ?, content = ?, last_updated = ? WHERE id = ?",
                     (
-                        document.get('filename', ''),
-                        document.get('collection', ''),
+                        filename,
+                        collection,
+                        content,
                         datetime.now().isoformat(),
-                        document.get('id', '')
+                        doc_id
                     )
                 )
+                logger.debug(f"Documento {doc_id} aggiornato nel database")
                 
                 # Elimina i metadati esistenti
-                cursor.execute("DELETE FROM document_metadata WHERE document_id = ?", (document.get('id', ''),))
+                cursor.execute("DELETE FROM document_metadata WHERE document_id = ?", (doc_id,))
             else:
                 # Inserisci nuovo documento
                 cursor.execute(
-                    "INSERT INTO documents (id, filename, collection, created_at, last_updated) VALUES (?, ?, ?, ?, ?)",
+                    "INSERT INTO documents (id, filename, collection, content, created_at, last_updated) VALUES (?, ?, ?, ?, ?, ?)",
                     (
-                        document.get('id', ''),
-                        document.get('filename', ''),
-                        document.get('collection', ''),
+                        doc_id,
+                        filename,
+                        collection,
+                        content,
                         document.get('metadata', {}).get('created_at', datetime.now().isoformat()),
                         datetime.now().isoformat()
                     )
                 )
+                logger.debug(f"Nuovo documento {doc_id} inserito nel database")
             
             # Inserisci i metadati
             metadata = document.get('metadata', {})
@@ -424,6 +482,64 @@ class DocumentDatabase:
             
         except Exception as e:
             logger.error(f"Errore nell'eliminazione del documento {document_id}: {str(e)}")
+            return False
+            
+    def update_metadata(self, document_id: str, key: str, value: Any) -> bool:
+        """
+        Aggiorna un singolo campo di metadati per un documento.
+        
+        Args:
+            document_id: ID del documento
+            key: Chiave del metadato da aggiornare
+            value: Nuovo valore
+            
+        Returns:
+            True se l'aggiornamento è avvenuto con successo, False altrimenti.
+        """
+        try:
+            conn = self._get_db_connection()
+            cursor = conn.cursor()
+            
+            # Verifica se il metadato esiste già
+            cursor.execute(
+                "SELECT id FROM document_metadata WHERE document_id = ? AND key = ?", 
+                (document_id, key)
+            )
+            existing = cursor.fetchone()
+            
+            # Determina il tipo di valore
+            value_type = "str"
+            if isinstance(value, int):
+                value_type = "int"
+            elif isinstance(value, float):
+                value_type = "float"
+            elif isinstance(value, bool):
+                value_type = "bool"
+            elif isinstance(value, dict) or isinstance(value, list):
+                value = json.dumps(value)
+                value_type = "json"
+            
+            if existing:
+                # Aggiorna il metadato esistente
+                cursor.execute(
+                    "UPDATE document_metadata SET value = ?, value_type = ? WHERE document_id = ? AND key = ?",
+                    (str(value), value_type, document_id, key)
+                )
+            else:
+                # Inserisce un nuovo metadato
+                cursor.execute(
+                    "INSERT INTO document_metadata (document_id, key, value, value_type) VALUES (?, ?, ?, ?)",
+                    (document_id, key, str(value), value_type)
+                )
+            
+            rows_affected = cursor.rowcount
+            conn.commit()
+            conn.close()
+            
+            return rows_affected > 0
+            
+        except Exception as e:
+            logger.error(f"Errore nell'aggiornamento del metadato {key} per il documento {document_id}: {str(e)}")
             return False
     
     def get_collections(self) -> List[str]:
@@ -584,11 +700,19 @@ class DocumentDatabase:
                     
                     # Converti il valore nel tipo corretto
                     if value_type == 'int':
-                        value = int(value)
+                        try:
+                            value = int(value)
+                        except ValueError:
+                            # Se non può essere convertito, mantieni come stringa
+                            pass
                     elif value_type == 'float':
-                        value = float(value)
+                        try:
+                            value = float(value)
+                        except ValueError:
+                            # Se non può essere convertito, mantieni come stringa
+                            pass
                     elif value_type == 'bool':
-                        value = value.lower() in ('true', '1', 'yes')
+                        value = str(value).lower() in ('true', '1', 'yes')
                     elif value_type == 'json':
                         try:
                             value = json.loads(value)

@@ -1,8 +1,8 @@
 """
-Estende il VectorstoreManager con metodi per supportare le nuove API di gestione.
+Estende il HybridDocumentManager con metodi per supportare le nuove API di gestione.
 """
 
-from app.utils.vectorstore_manager_db import VectorstoreManager as BaseVectorstoreManager
+from app.utils.hybrid_document_manager import HybridDocumentManager as BaseHybridDocumentManager
 import os
 import logging
 import chromadb
@@ -12,9 +12,9 @@ from typing import Dict, Any, List, Optional
 # Configurazione logger
 logger = logging.getLogger(__name__)
 
-class ExtendedVectorstoreManager(BaseVectorstoreManager):
+class ExtendedHybridDocumentManager(BaseHybridDocumentManager):
     """
-    Versione estesa del VectorstoreManager che aggiunge metodi necessari
+    Versione estesa del HybridDocumentManager che aggiunge metodi necessari
     per supportare le nuove funzionalità dell'API di gestione.
     """
     
@@ -221,3 +221,6 @@ class ExtendedVectorstoreManager(BaseVectorstoreManager):
         except Exception as e:
             logger.error(f"Errore nel reset del vector store: {str(e)}")
             return False
+
+# Alias per compatibilità con il vecchio nome
+ExtendedMetadataStoreManager = ExtendedHybridDocumentManager

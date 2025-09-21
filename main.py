@@ -72,8 +72,8 @@ async def app_lifespan(app: FastAPI):
         logger.info("Inizializzazione VectorstoreService...")
         
         # Inizializza ChromaDB Manager (in modalita persistente locale)
-        from app.core.chroma_manager import chroma_manager
-        chroma_status = chroma_manager.get_status()
+        from app.core.vectordb_manager import vector_db_manager
+        chroma_status = vector_db_manager.get_status()
         logger.info(f"ChromaDB inizializzato in modalita persistente locale. Stato: {chroma_status.get('status')}")
         
         # Avvia il file watcher personalizzato

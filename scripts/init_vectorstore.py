@@ -14,7 +14,7 @@ from datetime import datetime
 # Assicurati che il modulo app sia nel percorso Python
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
-from app.utils.vectorstore_manager import VectorstoreManager
+from app.utils.document_manager import DocumentManager
 
 # Configurazione logging
 logging.basicConfig(
@@ -39,7 +39,7 @@ def scan_pdf_directory(directory_path=None, recursive=True):
     if directory_path is None:
         directory_path = os.getcwd()
     
-    manager = VectorstoreManager()
+    manager = DocumentManager()
     
     # Crea un elenco di file PDF nella directory
     pdf_files = []

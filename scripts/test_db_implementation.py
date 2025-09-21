@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Test dell'implementazione del database SQLite per i documenti.
-Questo script esegue test di base sul DocumentDatabase e sul VectorstoreManager
+Questo script esegue test di base sul DocumentDatabase e sul MetadataStoreManager
 basato su database per verificare che le funzionalità chiave funzionino correttamente.
 """
 
@@ -31,7 +31,7 @@ sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')
 # Importa le classi da testare
 try:
     from app.utils.document_database import DocumentDatabase
-    from app.utils.vectorstore_manager_db import VectorstoreManager
+    from app.utils.document_manager import DocumentManager
 except ImportError as e:
     logger.error(f"Errore di importazione: {e}")
     logger.error("Verifica che gli script siano nel percorso corretto e che i moduli siano disponibili.")
@@ -189,8 +189,8 @@ class TestDocumentDatabase(unittest.TestCase):
         self.assertIn("doc1", exported_docs, "Il documento 'doc1' non è stato esportato")
         self.assertIn("doc2", exported_docs, "Il documento 'doc2' non è stato esportato")
 
-class TestVectorstoreManager(unittest.TestCase):
-    """Test per la classe VectorstoreManager."""
+class TestMetadataStoreManager(unittest.TestCase):
+    """Test per la classe MetadataStoreManager."""
     
     def setUp(self):
         """Configura l'ambiente di test."""
@@ -232,7 +232,7 @@ class TestVectorstoreManager(unittest.TestCase):
         logger.info(f"File JSON di test creato: {json_path}")
         
         # Inizializza il manager
-        self.manager = VectorstoreManager(
+        self.manager = DocumentManager(
             data_dir=os.path.join(self.test_dir, "data"),
             files_dir=os.path.join(self.test_dir, "files")
         )
@@ -320,7 +320,7 @@ def run_tests():
     
     # Aggiungi i test alla suite
     suite.addTest(loader.loadTestsFromTestCase(TestDocumentDatabase))
-    suite.addTest(loader.loadTestsFromTestCase(TestVectorstoreManager))
+    suite.addTest(loader.loadTestsFromTestCase(TestMetadataStoreManager))
     
     # Esegui i test
     runner = unittest.TextTestRunner(verbosity=2)
