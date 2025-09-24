@@ -124,17 +124,69 @@ app = FastAPI(
     lifespan=app_lifespan  # Usiamo il nuovo gestore del ciclo di vita invece di on_event
 )
 
-# Configura CORS
+# Configurazioni aggiuntive
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # In produzione, limitare agli origini specifici
+    allow_origins=["*"],  # In produzione, specificare domini specifici
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# Registra il router API centralizzato
+# Aggiungi i router all'app
 app.include_router(api_router)
+
+# Aggiungi un endpoint radice per /reset per la compatibilità con il frontend
+from fastapi import BackgroundTasks
+import os
+import logging
+from datetime import datetime
+from app.utils.sqlite_metadata_manager import SQLiteMetadataManager
+
+doc_db = SQLiteMetadataManager()
+logger = logging.getLogger(__name__)
+
+@app.post("/reset")
+async def reset_database_root():
+    """
+    Endpoint semplificato per resettare il database documenti (compatibilità frontend).
+    """
+    try:
+        logger.info("Richiesta reset database ricevuta su endpoint root /reset")
+        
+        # Reset diretto del database SQLite
+        import os
+        
+        # Ottieni il percorso del database
+        db_path = doc_db.db_file
+        logger.info(f"Resettando database: {db_path}")
+        
+        # Chiudi eventuali connessioni
+        if hasattr(doc_db, '_connection') and doc_db._connection:
+            doc_db._connection.close()
+            
+        # Rimuovi il file del database
+        if os.path.exists(db_path):
+            os.remove(db_path)
+            logger.info(f"Database file rimosso: {db_path}")
+            
+        # Ricrea il database vuoto
+        doc_db._init_database()
+        logger.info("Database ricreato vuoto")
+        
+        return {
+            "success": True,
+            "message": "Database SQL resettato con successo",
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Errore nel reset del database: {str(e)}")
+        return {
+            "success": False,
+            "message": f"Errore nel reset: {str(e)}",
+            "timestamp": datetime.now().isoformat()
+        }
 
 if __name__ == "__main__":
     port = int(os.getenv("VECTORSTORE_PORT", os.getenv("PORT", "8090")))  # Usa VECTORSTORE_PORT o PORT o default 8090

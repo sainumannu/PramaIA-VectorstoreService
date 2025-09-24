@@ -15,6 +15,7 @@ from pathlib import Path
 
 from app.utils.sqlite_metadata_manager import SQLiteMetadataManager
 from app.utils.document_manager import DocumentManager
+# from app.utils.database_admin_manager import DatabaseAdminManager  # Temporaneamente disabilitato
 
 # Configurazione logger
 logger = logging.getLogger(__name__)
@@ -25,6 +26,7 @@ router = APIRouter(prefix="/api/database-management", tags=["database"])
 # Inizializzazione delle dipendenze
 doc_db = SQLiteMetadataManager()
 vector_manager = DocumentManager()
+# admin_manager = DatabaseAdminManager()  # Temporaneamente disabilitato
 
 # Directory per i backup
 BACKUP_DIR = os.path.join(os.getcwd(), "backups")
@@ -170,6 +172,118 @@ async def backup_document_db(background_tasks: BackgroundTasks):
             "message": f"Errore nel backup: {str(e)}"
         }
 
+# Endpoint semplice per il reset (alias)
+@router.post("/reset")
+async def reset_database():
+    """
+    Endpoint semplificato per resettare il database documenti.
+    """
+    try:
+        logger.info("Richiesta reset database ricevuta")
+        
+        # Reset diretto del database SQLite
+        import os
+        
+        # Ottieni il percorso del database
+        db_path = doc_db.db_file
+        logger.info(f"Resettando database: {db_path}")
+        
+        # Chiudi eventuali connessioni
+        if hasattr(doc_db, '_connection') and doc_db._connection:
+            doc_db._connection.close()
+            
+        # Rimuovi il file del database
+        if os.path.exists(db_path):
+            os.remove(db_path)
+            logger.info(f"Database file rimosso: {db_path}")
+            
+        # Ricrea il database vuoto
+        doc_db._init_database()
+        logger.info("Database ricreato vuoto")
+        
+        return {
+            "success": True,
+            "message": "Database SQL resettato con successo",
+            "timestamp": datetime.now().isoformat()
+        }
+        
+    except Exception as e:
+        logger.error(f"Errore nel reset del database: {str(e)}")
+        return {
+            "success": False,
+            "message": f"Errore nel reset: {str(e)}",
+            "timestamp": datetime.now().isoformat()
+        }
+
+# Endpoint specifico per il tipo di reset (sql/chroma) 
+@router.post("/reset/{type}")
+async def reset_database_by_type(type: str):
+    """
+    Resetta un database specifico in base al tipo (sql o chroma).
+    """
+    try:
+        logger.info(f"Richiesta reset database tipo '{type}' ricevuta")
+        
+        if type.lower() == "sql":
+            # Reset diretto del database SQLite
+            import os
+            
+            # Ottieni il percorso del database
+            db_path = doc_db.db_file
+            logger.info(f"Resettando database SQL: {db_path}")
+            
+            # Chiudi eventuali connessioni
+            if hasattr(doc_db, '_connection') and doc_db._connection:
+                doc_db._connection.close()
+                
+            # Rimuovi il file del database
+            if os.path.exists(db_path):
+                os.remove(db_path)
+                logger.info(f"Database file rimosso: {db_path}")
+                
+            # Ricrea il database vuoto
+            doc_db._init_database()
+            logger.info("Database SQL ricreato vuoto")
+            
+            return {
+                "success": True,
+                "message": "Database SQL resettato con successo",
+                "timestamp": datetime.now().isoformat()
+            }
+        elif type.lower() == "chroma":
+            # Resetta il vector store (ChromaDB)
+            logger.info("Resettando ChromaDB vector store")
+            
+            success = vector_manager.reset()
+            
+            if success:
+                return {
+                    "success": True,
+                    "message": "Vector store (ChromaDB) resettato con successo",
+                    "timestamp": datetime.now().isoformat()
+                }
+            else:
+                return {
+                    "success": False,
+                    "message": "Errore nel reset del vector store",
+                    "timestamp": datetime.now().isoformat()
+                }
+        else:
+            logger.warning(f"Tipo di reset non valido: {type}")
+            return {
+                "success": False,
+                "message": f"Tipo di reset non valido: {type}. Valori supportati: 'sql' o 'chroma'",
+                "timestamp": datetime.now().isoformat()
+            }
+        
+    except Exception as e:
+        logger.error(f"Errore nel reset del database tipo '{type}': {str(e)}")
+        return {
+            "success": False,
+            "message": f"Errore nel reset: {str(e)}",
+            "timestamp": datetime.now().isoformat()
+        }
+
 # Endpoint per il reset del database documenti
 @router.post("/documents/reset")
 async def reset_document_db():
@@ -177,47 +291,36 @@ async def reset_document_db():
     Resetta il database documenti (elimina tutti i documenti).
     """
     try:
-        # Crea un backup prima del reset
-        backup_path = os.path.join(BACKUP_DIR, f"documents_pre_reset_{get_timestamp()}")
-        os.makedirs(backup_path, exist_ok=True)
+        logger.info("Richiesta reset database documenti ricevuta")
         
-        # Backup del database e JSON
-        db_source = doc_db.db_file
-        db_dest = os.path.join(backup_path, "documents.db")
-        json_dest = os.path.join(backup_path, "documents.json")
+        # Reset diretto del database SQLite
+        import os
         
-        # Copia il file del database
-        shutil.copy2(db_source, db_dest)
+        # Ottieni il percorso del database
+        db_path = doc_db.db_file
+        logger.info(f"Resettando database documenti: {db_path}")
         
-        # Esporta anche in JSON
-        doc_db.export_to_json(json_dest)
-        
-        # Elimina il database attuale
-        try:
-            os.remove(db_source)
-        except:
-            pass
-        
-        # Reinizializza il database (nuovo vuoto)
-        # Utilizziamo una variabile temporanea e poi la assegnamo alla variabile globale
-        # all'esterno di questa funzione
-        temp_db = SQLiteMetadataManager(migrate_from_json=False)
-        
-        # Aggiorniamo il riferimento globale al database
-        globals()['doc_db'] = temp_db
+        # Rimuovi il file del database
+        if os.path.exists(db_path):
+            os.remove(db_path)
+            logger.info(f"Database file rimosso: {db_path}")
+            
+        # Ricrea il database vuoto
+        doc_db._init_database()
+        logger.info("Database documenti ricreato vuoto")
         
         return {
             "success": True,
             "message": "Database documenti resettato con successo",
-            "details": {
-                "backup_path": backup_path
-            }
+            "timestamp": datetime.now().isoformat()
         }
+        
     except Exception as e:
         logger.error(f"Errore nel reset del database documenti: {str(e)}")
         return {
             "success": False,
-            "message": f"Errore nel reset: {str(e)}"
+            "message": f"Errore nel reset: {str(e)}",
+            "timestamp": datetime.now().isoformat()
         }
 
 # Endpoint per ottenere lo stato del vector store
