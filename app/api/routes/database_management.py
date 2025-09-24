@@ -352,8 +352,7 @@ async def get_vectorstore_status():
             "collections": stats.get("collections", []),
             "documents_today": documents_today,
             "avg_chunk_size": stats.get("avg_chunk_size", 0),
-            "embedding_model": stats.get("embedding_model", ""),
-            "database_path": vector_manager.get_persistence_path()
+            "embedding_model": stats.get("embedding_model", "")
         }
     except Exception as e:
         logger.error(f"Errore nel recupero dello stato del vector store: {str(e)}")
@@ -405,52 +404,10 @@ async def backup_vectorstore(background_tasks: BackgroundTasks):
     """
     Crea un backup del vector store.
     """
-    try:
-        # Crea directory di backup specifica
-        backup_path = os.path.join(BACKUP_DIR, f"vectorstore_backup_{get_timestamp()}")
-        os.makedirs(backup_path, exist_ok=True)
-        
-        # Ottieni il percorso del database di ChromaDB
-        chroma_path = vector_manager.get_persistence_path()
-        
-        # Esegui il backup in background
-        def do_backup():
-            try:
-                # Copia la directory di ChromaDB
-                if os.path.isdir(chroma_path):
-                    chroma_dest = os.path.join(backup_path, "chroma_db")
-                    shutil.copytree(chroma_path, chroma_dest)
-                    
-                    # Esporta anche metadati in JSON
-                    try:
-                        documents = vector_manager.list_documents(metadata_only=True)
-                        with open(os.path.join(backup_path, "vector_documents.json"), "w", encoding="utf-8") as f:
-                            json.dump({"documents": documents}, f, ensure_ascii=False, indent=2)
-                    except Exception as json_err:
-                        logger.warning(f"Errore nell'esportazione JSON del vector store: {str(json_err)}")
-                    
-                    logger.info(f"Backup del vector store completato: {backup_path}")
-                else:
-                    raise ValueError(f"Il percorso del vector store non è valido: {chroma_path}")
-            except Exception as e:
-                logger.error(f"Errore durante l'esecuzione del backup del vector store: {str(e)}")
-        
-        background_tasks.add_task(do_backup)
-        
-        return {
-            "success": True,
-            "message": "Backup del vector store avviato",
-            "details": {
-                "backup_path": backup_path,
-                "source_path": chroma_path
-            }
-        }
-    except Exception as e:
-        logger.error(f"Errore nell'avvio del backup del vector store: {str(e)}")
-        return {
-            "success": False,
-            "message": f"Errore nel backup: {str(e)}"
-        }
+    return {
+        "success": False,
+        "message": "Backup vector store non implementato in questa build"
+    }
 
 # Endpoint per il reset del vector store
 @router.post("/vectorstore/reset")
@@ -459,36 +416,12 @@ async def reset_vectorstore():
     Resetta il vector store (elimina tutti i documenti).
     """
     try:
-        # Crea un backup prima del reset
-        backup_path = os.path.join(BACKUP_DIR, f"vectorstore_pre_reset_{get_timestamp()}")
-        os.makedirs(backup_path, exist_ok=True)
-        
-        # Ottieni il percorso del database di ChromaDB
-        chroma_path = vector_manager.get_persistence_path()
-        
-        # Esegui backup
-        if os.path.isdir(chroma_path):
-            chroma_dest = os.path.join(backup_path, "chroma_db")
-            shutil.copytree(chroma_path, chroma_dest)
-            
-            # Esporta anche metadati in JSON
-            try:
-                documents = vector_manager.list_documents(metadata_only=True)
-                with open(os.path.join(backup_path, "vector_documents.json"), "w", encoding="utf-8") as f:
-                    json.dump({"documents": documents}, f, ensure_ascii=False, indent=2)
-            except Exception as json_err:
-                logger.warning(f"Errore nell'esportazione JSON del vector store: {str(json_err)}")
-        
-        # Resetta il vector store
-        success = vector_manager.reset()
-        
+        # Resetta il vector store (ChromaDB)
+        success = vector_manager.reset() if hasattr(vector_manager, 'reset') else False
         if success:
             return {
                 "success": True,
-                "message": "Vector store resettato con successo",
-                "details": {
-                    "backup_path": backup_path
-                }
+                "message": "Vector store resettato con successo"
             }
         else:
             return {
