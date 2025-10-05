@@ -36,6 +36,9 @@ class Settings(BaseModel):
     # Impostazioni di elaborazione
     max_worker_threads: int = 4
     batch_size: int = 100
+    
+    # Impostazioni database
+    SQLITE_DB_PATH: str = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data", "documents.db")
 
 def get_settings() -> Settings:
     """

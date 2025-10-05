@@ -3,7 +3,7 @@ Modulo API del VectorstoreService.
 """
 
 from fastapi import APIRouter
-from app.api.routes import documents, collections, reconciliation, health, stats, embeddings, api_gateway, vectorstore, settings, database, database_management, vectorstore_service_status
+from app.api.routes import documents, collections, reconciliation, health, stats, embeddings, api_gateway, vectorstore, settings, database, database_management, vectorstore_service_status, file_hashes
 
 # Create API router
 api_router = APIRouter()
@@ -29,6 +29,9 @@ api_router.include_router(database_management.router, tags=["database-management
 
 # API per lo stato del servizio Vectorstore
 api_router.include_router(vectorstore_service_status.router, tags=["vectorstore-status"])
+
+# API per la gestione degli hash dei file
+api_router.include_router(file_hashes.router, tags=["file-hashes"])
 
 # Ensure api_router is exported
 __all__ = ["api_router"]

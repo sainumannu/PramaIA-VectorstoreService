@@ -417,20 +417,20 @@ async def reset_vectorstore():
     """
     try:
         # Resetta il vector store (ChromaDB)
-        success = vector_manager.reset() if hasattr(vector_manager, 'reset') else False
-        if success:
-            return {
-                "success": True,
-                "message": "Vector store resettato con successo"
-            }
-        else:
-            return {
-                "success": False,
-                "message": "Errore nel reset del vector store"
-            }
+        success = vector_manager.reset_all_data() if hasattr(vector_manager, 'reset_all_data') else False
     except Exception as e:
         logger.error(f"Errore nel reset del vector store: {str(e)}")
         return {
             "success": False,
             "message": f"Errore nel reset: {str(e)}"
+        }
+    if success:
+        return {
+            "success": True,
+            "message": "Vector store resettato con successo"
+        }
+    else:
+        return {
+            "success": False,
+            "message": "Errore nel reset del vector store"
         }
