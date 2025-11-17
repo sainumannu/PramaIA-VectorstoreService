@@ -332,3 +332,63 @@ async def delete_document(document_id: str):
         )
     
     return {"message": f"Documento con ID {document_id} eliminato con successo"}
+
+@router.post("/{collection_name}/query")
+async def query_collection(
+    collection_name: str,
+    query_data: Dict[str, Any] = Body(...)
+):
+    """
+    Execute a semantic search query on a specific collection.
+    
+    Args:
+        collection_name: Name of the collection to search
+        query_data: Query parameters including query_text, top_k, metadata_filter
+        
+    Returns:
+        Dict: Search results with matches
+    """
+    try:
+        query_text = query_data.get("query_text", "")
+        top_k = query_data.get("top_k", 5)
+        metadata_filter = query_data.get("metadata_filter", {})
+        
+        if not query_text:
+            raise HTTPException(
+                status_code=status.HTTP_400_BAD_REQUEST,
+                detail="query_text is required"
+            )
+        
+        print(f"[DEBUG] Query collection '{collection_name}': '{query_text}' (top_k={top_k})")
+        
+        # Usa il DocumentManager per eseguire la ricerca
+        manager = get_metadata_manager()
+        results = manager.search_documents(query_text, limit=top_k, where=metadata_filter)
+        
+        # Formatta i risultati nel formato atteso dal client
+        matches = []
+        for result in results:
+            match = {
+                "id": result.get("id", ""),
+                "document": result.get("content", ""),
+                "metadata": result.get("metadata", {}),
+                "similarity_score": result.get("score", 0.0)  # Se disponibile
+            }
+            matches.append(match)
+        
+        print(f"[DEBUG] Query '{collection_name}' returned {len(matches)} matches")
+        return {
+            "matches": matches,
+            "total": len(matches),
+            "collection": collection_name,
+            "query": query_text
+        }
+        
+    except Exception as e:
+        print(f"[ERROR] Query collection '{collection_name}' failed: {e}")
+        import traceback
+        traceback.print_exc()
+        raise HTTPException(
+            status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
+            detail=f"Query failed: {str(e)}"
+        )

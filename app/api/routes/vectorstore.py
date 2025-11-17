@@ -3,7 +3,7 @@ Vectorstore Statistics module.
 """
 
 from fastapi import APIRouter, Query, Path, HTTPException, status
-from app.utils.document_manager import DocumentManager
+from app.utils.sqlite_metadata_manager import SQLiteMetadataManager
 import logging
 from typing import Dict, List, Any, Optional
 from datetime import datetime
@@ -15,7 +15,7 @@ router = APIRouter()
 logger = logging.getLogger(__name__)
 
 # Initialize MetadataStoreManager
-metadata_manager = DocumentManager()
+metadata_manager = SQLiteMetadataManager()
 
 @router.get("/")
 async def get_vectorstore_stats():
